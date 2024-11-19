@@ -1,7 +1,5 @@
-let participants = Number(prompt("How many participants?: "));
-
+let participants = Number(prompt("How many participants? "));
 let names = [];
-
 
 for (let i = 0; i < participants; i++) {
     names.push(prompt("Give me a name of the participant: "));
@@ -9,11 +7,14 @@ for (let i = 0; i < participants; i++) {
 
 names.sort();
 
-let namesList = "<ol>";
+let namesContainer = document.getElementById("names");
+
+let namesList = document.createElement("ul");
 
 for (let i = 0; i < names.length; i++) {
-    namesList += "<li>" + names[i] + "</li>";
+    let listItem = document.createElement("li");
+    listItem.textContent = names[i];
+    namesList.appendChild(listItem);
 }
-namesList += "</ol>";
 
-document.getElementById("names").innerHTML = namesList;
+namesContainer.appendChild(namesList);
